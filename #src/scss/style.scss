@@ -1,0 +1,268 @@
+@mixin font($font_name, $file_name, $weight, $style) {
+
+	@font-face {
+		font-family: $font_name;
+		font-display: swap;
+		src: url("../fonts/#{$file_name}.woff") format("woff"), url("../fonts/#{$file_name}.woff2") format("woff2");
+		font-weight: #{$weight};
+		font-style: #{$style};
+	}
+}
+
+@import "fonts";
+
+/*Обнуление*/
+*{
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+*,*:before,*:after{
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+:focus,:active{outline: none;}
+a:focus,a:active{outline: none;}
+
+
+
+body{
+	overflow-x: hidden;
+}
+
+nav,footer,header,aside{display: block;}
+
+html,body{
+	height: 100%;
+	width: 100%;
+	font-size: 100%;
+	line-height: 1;
+	font-size: 14px;
+	-ms-text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+input,button,textarea{font-family:inherit;}
+
+input::-ms-clear{display: none;}
+button{cursor: pointer;}
+button::-moz-focus-inner {padding:0;border:0;}
+a, a:visited{text-decoration: none;}
+a:hover{text-decoration: none;}
+ul li{list-style: none;}
+img{vertical-align: top;}
+
+h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;text-align: center;}
+p{text-align: center;}
+
+/*--------------------*/
+
+$mc3 :MuseoSansCyrl-300;
+$mc5 :MuseoSansCyrl-500;
+$mc7 :MuseoSansCyrl-700;
+
+$orage: #E69A37;
+$white : #FFFFFF;
+$black : #000000;
+$gray : #323232;
+$semi-white: #F3F3F3;
+
+
+.container{
+	max-width: 1190px;
+	margin: 0 auto;
+	padding: 0 10px;
+}
+
+
+.header {
+
+	&__top {
+		border-bottom: 1px solid #d9d9d9;
+		padding: 15px 0;
+		width: 100%;
+		&>.container{
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+	}
+
+	&__logo {
+		margin-right: 15px;
+	}
+
+	&__search {
+		position: relative;
+		max-width: 557px;
+		width: 100%;
+	}
+	&__input{
+		background: $semi-white;
+		padding: 15px 20px;
+		font-size: 16px;
+		width: 100%;
+		font-family: $mc5;
+	}
+	&__button{
+		position: absolute;
+		right: 20px;
+		top: 11px;
+	}
+	&__bot {
+	}
+}
+
+.nav{
+	display: flex;
+	justify-content: center;
+	&__item{
+		font-family: $mc5;
+		font-size: 18px;
+		font-weight: 400;
+		padding: 20px 25px;
+		cursor: pointer;
+		text-align: center;
+		&:hover{
+			background-color: $orage;
+			color: $white;
+		}
+	}
+	&__active{
+		background-color: $gray;
+		color: $white;
+	}
+}
+
+.burger {
+	height: 30px;
+	width: 40px;
+	display: none;
+	justify-content: space-between;
+	flex-direction: column;
+	height: 30px;
+	width: 40px;
+	margin-left: 5px;
+		&>div{
+			height: 4px;
+			width: 100%;
+			background-color: $black;
+		}
+}
+
+.mobile{
+	display: none;
+	z-index: 1;
+}
+.mobile__active{
+	display: block !important;
+}
+
+.mainpage {
+	position: relative;
+
+	&__slider {
+		padding: 130px 0;
+		background-size: cover;
+		background-position: center;
+	}
+
+	&__title {
+		& h3{
+			display: block;
+			padding: 10px 20px;
+			background-color: $orage;
+			color: $white;
+			font-family: $mc7;
+			font-size: 13px;
+			max-width: 228px;
+			letter-spacing: 3px;
+			margin-bottom: 20px;
+		}
+		& h1{
+			font-family: $mc7;
+			font-size: 60px;
+			line-height: 68px;
+			text-align: left;
+			color: $white;
+			font-weight: 700;
+			margin-bottom: 20px;
+		}
+		& p{
+			font-family: $mc3;
+			font-size: 22px;
+			line-height: 28px;
+			text-align: left;
+			color: $white;
+			font-weight: 400;
+			max-width: 650px;
+		}
+		
+	}
+	&__pagination{
+		position: absolute;
+		right: 0;
+		left: 0;
+		bottom: 40px;
+		display: flex;
+		justify-content: center;
+		& div{
+			width: 12px;
+			height: 12px;
+			border: 1px solid $white;
+			margin: 0 7.5px;
+			cursor: pointer;
+			&:hover{
+				background-color: $white;
+			}
+		}
+	}
+}
+.slide-1{
+	background-image: url(../img/main.jpg);
+
+}
+
+
+
+.about {
+	border-bottom: 1px solid #d9d9d9;
+
+	&>.container{
+		display: flex;
+	}
+	&__item {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 35px 5px;
+		cursor: pointer;
+		& img{
+
+		}
+		& p{
+			text-align: left;
+			font-family: $mc3;
+			font-size: 14px;
+			line-height: 20px;
+			text-align: left;
+			color: $gray;
+			font-weight: 300;
+			margin-left: 15px;
+		}
+		&:hover{
+			background-color: $semi-white;
+		}
+		&:hover p{
+			text-decoration: underline;
+		}
+	}
+}
+
+.null{
+	height: 67px;
+}
+
+@import "media";
